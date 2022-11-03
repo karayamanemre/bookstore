@@ -11,10 +11,9 @@ export default function BookList() {
   ];
   return (
     <div>
-      {data &&
-        data.map((book) => (
-          <Book key={1} title={book.title} author={book.author} />
-        ))}
+      {data.map((book) => (
+        <Book key={1} title={book.title} author={book.author} />
+      ))}
       <AddForm />
     </div>
   );
