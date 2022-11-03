@@ -1,5 +1,6 @@
 import React from 'react';
 import Book from './Book';
+import AddForm from './AddForm';
 
 export default function BookList() {
   const data = [
@@ -8,7 +9,13 @@ export default function BookList() {
       author: 'Stephen King',
     },
   ];
-  return data.map((book) => (
-    <Book key={1} title={book.title} author={book.author} />
-  ));
+  return (
+    <div>
+      {data &&
+        data.map((book) => (
+          <Book key={1} title={book.title} author={book.author} />
+        ))}
+      <AddForm />
+    </div>
+  );
 }
