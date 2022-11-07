@@ -34,7 +34,7 @@ export default function AddForm() {
       <form onSubmit={formHandler}>
         <input placeholder="Title" value={title} onChange={titleHandler} />
         <input placeholder="Author" value={author} onChange={authorHandler} />
-        <button type="submit">ADD BOOK</button>
+        <button type="submit">Add Book</button>
       </form>
     </div>
   );
