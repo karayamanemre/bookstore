@@ -2,11 +2,12 @@
 
 # Bookstore
 
->
+> With Bookstore app you can add or remove books. SPA built with React, Redux.
 
 ## Built With
 
 - React
+- Redux
 
 ## Live Demo
 
