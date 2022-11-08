@@ -3,11 +3,11 @@ import thunk from 'redux-thunk';
 import booksReducer from './books/books';
 import categoriesReducer from './categories/categories';
 
-const rootReducer = combineReducers({
+const reducer = combineReducers({
   booksReducer,
   categoriesReducer,
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;
