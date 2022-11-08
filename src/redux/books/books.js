@@ -1,34 +1,52 @@
-import { v4 as uuidv4 } from 'uuid';
+const apiUrl =
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/nOIR3Yqx8pTh6zZ2Grvy';
 
-const ADD_BOOK = 'bookstore/books/ADD_BOOK';
-const DEL_BOOK = 'bookstore/books/DEL_BOOK';
-const INITIAL_STATE = [
-  {
-    title: 'The Dark Tower',
-    author: 'Stephen King',
-    id: uuidv4(),
-  },
-  {
-    title: 'Billy Summers',
-    author: 'Stephen King',
-    id: uuidv4(),
-  },
-];
+const SHOW_BOOKS = 'bookstore/books/SHOW_BOOKS';
 
-export function addBook(book) {
-  return { type: ADD_BOOK, payload: book };
-}
+export const showBooks = (data) => ({
+  type: SHOW_BOOKS,
+  data,
+});
 
-export function delBook(id) {
-  return { type: DEL_BOOK, payload: id };
-}
+export const getBook = () => (dispatch) => {
+  fetch(`${apiUrl}/books/`)
+    .then((response) => response.json())
+    .then((json) => dispatch(showBooks(json)));
+};
 
-export default function booksReducer(state = INITIAL_STATE, action) {
+export const addBook =
+  (id, title, author, category = 'Other') =>
+  (dispatch) => {
+    fetch(`${apiUrl}/books/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        item_id: id,
+        title,
+        author,
+        category,
+      }),
+    }).then(() => dispatch(getBook()));
+  };
+
+export const delBook = (id) => (dispatch) => {
+  fetch(`${apiUrl}/books/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      item_id: id,
+    }),
+  }).then(() => dispatch(getBook()));
+};
+
+export default function booksReducer(state = {}, action) {
   switch (action.type) {
-    case ADD_BOOK:
-      return state.concat(action.payload);
-    case DEL_BOOK:
-      return [...state.filter((book) => book.id !== action.payload)];
+    case SHOW_BOOKS:
+      return action.data;
     default:
       return state;
   }
