@@ -13,21 +13,20 @@ export const getBook = () => (dispatch) => {
     .then((json) => dispatch(showBooks(json)));
 };
 
-export const addBook = (id, title, author, category = 'Other') =>
-  (dispatch) => {
-    fetch(`${apiUrl}/books/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        item_id: id,
-        title,
-        author,
-        category,
-      }),
-    }).then(() => dispatch(getBook()));
-  };
+export const addBook = (id, title, author, category = 'Other') => (dispatch) => {
+  fetch(`${apiUrl}/books/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      item_id: id,
+      title,
+      author,
+      category,
+    }),
+  }).then(() => dispatch(getBook()));
+};
 
 export const delBook = (id) => (dispatch) => {
   fetch(`${apiUrl}/books/${id}`, {
