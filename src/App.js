@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { getBook } from './redux/books/books';
-import Books from './Components/BookList.js';
-import Categories from './Components/Categories.js';
-import Navbar from './Components/Navbar.js';
+import Books from './Components/BookList';
+import Categories from './Components/Categories';
+import Navbar from './Components/Navbar';
 import './App.css';
 
 function App() {
