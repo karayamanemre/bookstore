@@ -1,12 +1,12 @@
 import React from 'react';
 import Book from './Book';
-import AddForm from './AddForm';
+import Form from './AddForm';
 
-export default function BookList() {
+export default function Books() {
   return (
-    <div>
+    <section>
       <Book />
-      <AddForm />
-    </div>
+      <Form />
+    </section>
   );
 }

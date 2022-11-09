@@ -1,41 +1,56 @@
-import { React, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
 import { addBook } from '../redux/books/books';
 
-export default function AddForm() {
+export default function Form() {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-
+  const [formData, setFormData] = useState({
+    id: uuidv4(),
+    title: '',
+    author: '',
+    category: '',
+  });
   const formHandler = (e) => {
     e.preventDefault();
-    dispatch(
-      addBook({
-        id: uuidv4(),
-        title,
-        author,
-      }),
-    );
-    setTitle('');
-    setAuthor('');
+    dispatch(addBook(formData));
+    setFormData({
+      id: uuidv4(),
+      title: '',
+      author: '',
+      category: '',
+    });
+  };
+  const inputHandler = (e) => {
+    const {
+      name, value, type, checked,
+    } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
 
-  const titleHandler = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const authorHandler = (e) => {
-    setAuthor(e.target.value);
-  };
   return (
-    <div className="add-book">
-      <h3>Add New Book</h3>
+    <>
+      <h2>Add New Book</h2>
       <form onSubmit={formHandler}>
-        <input placeholder="Title" value={title} onChange={titleHandler} />
-        <input placeholder="Author" value={author} onChange={authorHandler} />
+        <input
+          type="text"
+          placeholder="Book title"
+          value={formData.title}
+          name="title"
+          onChange={inputHandler}
+        />
+        <input
+          type="text"
+          placeholder="Book author"
+          value={formData.author}
+          name="author"
+          onChange={inputHandler}
+        />
         <button type="submit">Add Book</button>
       </form>
-    </div>
+    </>
   );
 }
