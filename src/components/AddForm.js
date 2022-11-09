@@ -52,11 +52,11 @@ export default function Form() {
           />
           <select name="category" id="category" onChange={inputHandler}>
           <option value="">Categories</option>
-          <option value="Fictio">Fiction</option>
+          <option value="Fiction">Fiction</option>
           <option value="Action">Action</option>
           <option value="Horror">Horror</option>
           <option value="Fantasy">Fantasy</option>
-          <option value="Sci-Fi">Scientific</option>
+          <option value="Sci-Fi">Sci-Fi</option>
           <option value="Comic Book">Comic Book</option>
         </select>
           <button className="form-btn" type="submit">ADD BOOK</button>
