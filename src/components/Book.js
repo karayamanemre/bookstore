@@ -14,7 +14,7 @@ export default function Book() {
       <div className="book-container">
         {books.map((book) => (
           <div className="book-item" key={book.id}>
-            <div className="book-left">  
+            <div className="book-left">
               <div className="book-info">
                 <p className="category">{book.category}</p>
                 <p className="title">{book.title}</p>
@@ -28,7 +28,7 @@ export default function Book() {
             </div>
             <div className="book-right">
               <div className="circle-container">
-                <div className="circle"></div>
+                <div className="circle" />
                 <div className="circle-text">
                   <span className="percentage">75%</span>
                   <span className="completed-text">Completed</span>
@@ -37,9 +37,9 @@ export default function Book() {
               <div className="chapter-container">
                 <p className="current-chapter">CURRENT CHAPTER</p>
                 <p className="chapter-no">Chapter 17</p>
-                <button className="chapter-button">UPDATE PROGRESS</button>
+                <button type="button" className="chapter-button">UPDATE PROGRESS</button>
               </div>
-            </div> 
+            </div>
           </div>
         ))}
       </div>
