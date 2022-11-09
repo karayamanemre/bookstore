@@ -4,15 +4,20 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
   return (
     <header>
-      <h1>Bookstore CMS</h1>
       <ul className="nav-links">
         <li>
-          <Link to="/">Books</Link>
+          <h1>Bookstore CMS</h1>
         </li>
         <li>
-          <Link to="/categories">Categories</Link>
+          <Link to="/">BOOKS</Link>
+        </li>
+        <li>
+          <Link to="/categories">CATEGORIES</Link>
         </li>
       </ul>
+      <span className="material-symbols-rounded user-icon">
+        account_circle
+      </span>
     </header>
   );
 }

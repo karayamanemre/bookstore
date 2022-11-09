@@ -11,9 +11,9 @@ export default function Categories() {
     setChecked(true);
   };
   return (
-    <div>
-      <p>{status}</p>
-      <button type="button" onClick={checkHandler}>Check Status</button>
+    <div className="categories">
+      <p className="status">{status}</p>
+      <button className="check-btn" type="button" onClick={checkHandler}>CHECK STATUS</button>
     </div>
   );
 }

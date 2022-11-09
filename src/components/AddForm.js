@@ -33,24 +33,35 @@ export default function Form() {
 
   return (
     <>
-      <h2>Add New Book</h2>
-      <form onSubmit={formHandler}>
-        <input
-          type="text"
-          placeholder="Book title"
-          value={formData.title}
-          name="title"
-          onChange={inputHandler}
-        />
-        <input
-          type="text"
-          placeholder="Book author"
-          value={formData.author}
-          name="author"
-          onChange={inputHandler}
-        />
-        <button type="submit">Add Book</button>
-      </form>
+      <div className="form-container">
+        <h2>ADD NEW BOOK</h2>
+        <form onSubmit={formHandler}>
+          <input
+            type="text"
+            placeholder="Book title"
+            value={formData.title}
+            name="title"
+            onChange={inputHandler}
+          />
+          <input
+            type="text"
+            placeholder="Book author"
+            value={formData.author}
+            name="author"
+            onChange={inputHandler}
+          />
+          <select name="category" id="category" onChange={inputHandler}>
+            <option value="">Categories</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Action">Action</option>
+            <option value="Horror">Horror</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Comic Book">Comic Book</option>
+          </select>
+          <button className="form-btn" type="submit">ADD BOOK</button>
+        </form>
+      </div>
     </>
   );
 }
