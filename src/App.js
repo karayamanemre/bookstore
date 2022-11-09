@@ -1,23 +1,25 @@
-import './App.css';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Navbar from './components/Navbar';
-import BookList from './components/BookList';
-import Categories from './components/Categories';
+import { Route, Routes} from 'react-router-dom';
 import { getBook } from './redux/books/books';
+import Books from './Components/BookList';
+import Categories from './Components/Categories';
+import Navbar from './Components/Navbar';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(getBook()));
+  useEffect(() => {
+    dispatch(getBook());
+  }, []);
   return (
-    <BrowserRouter>
+    <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<BookList />} />
+        <Route path="/" element={<Books />} />
         <Route path="/categories" element={<Categories />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 

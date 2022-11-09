@@ -1,28 +1,26 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { delBook } from '../redux/books/books';
 
-const Book = () => {
-  const books = useSelector((state) => state.booksReducer);
+export default function Book() {
+  const { books } = useSelector((state) => state.books);
   const dispatch = useDispatch();
-  const handleClick = (bookDelete) => {
-    dispatch(delBook(bookDelete));
+  const deleteHandler = (id) => {
+    dispatch(delBook(id));
   };
 
   return (
-    <div className="book-item">
-      {Object.keys(books).map((book) => (
-        <div key={book}>
-          <p>{books[book][0].category}</p>
-          <p>{books[book][0].title}</p>
-          <p>{books[book][0].author}</p>
-          <button type="button" onClick={() => handleClick(book)}>
-            Delete
-          </button>
+    <>
+      {books.map((book) => (
+        <div className="book-item" key={book.id}>
+          <p>{book.category}</p>
+          <p>{book.title}</p>
+          <p>{book.author}</p>
+          <div>
+            <button type="button" onClick={() => deleteHandler(book.id)}>Delete Book</button>
+          </div>
         </div>
       ))}
-    </div>
+    </>
   );
-};
-
-export default Book;
+}
