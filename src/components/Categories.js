@@ -13,7 +13,7 @@ export default function Categories() {
   return (
     <div>
       <p>{status}</p>
-      <button onClick={checkHandler}>Check Status</button>
+      <button type='button' onClick={checkHandler}>Check Status</button>
     </div>
   );
 }
